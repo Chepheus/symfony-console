@@ -1,0 +1,8 @@
+services:
+  kernel.listener.console:
+    class: App\ChainCommandBundle\Event\Listener\CommandListener
+    arguments:
+      - '@Symfony\Component\EventDispatcher\EventDispatcherInterface'
+    tags:
+      - { name: kernel.event_listener, event: console.command, method: onConsoleCommand }
+      - { name: kernel.event_listener, event: console.terminate, method: onConsoleTerminate }

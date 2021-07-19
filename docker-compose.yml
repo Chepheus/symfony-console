@@ -2,17 +2,17 @@ version: '3.1'
 
 services:
   nginx-php-fpm:
-    image: webdevops/php-nginx-dev:8.0-alpine
+    image: webdevops/php-nginx:8.0-alpine
     restart: always
     ports:
-      - 80:80
+      - 8001:80
     networks:
       custom_network:
     environment:
-      - WEB_DOCUMENT_ROOT=/app
+      - WEB_DOCUMENT_ROOT=/app/src/public
       - WEB_DOCUMENT_INDEX=index.php
     volumes:
-      - ./question2answer:/app
+      - ./:/app
 
 networks:
   custom_network:
